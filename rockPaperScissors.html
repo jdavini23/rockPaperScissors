@@ -9,8 +9,11 @@
 
     <script type="text/javascript">
 
-      var gameOptions = ['rock', 'paper', 'scissors'];
-      var playerSelection = prompt('Pick Rock, Paper, Scissors?');
+      let gameOptions = ['rock', 'paper', 'scissors'];
+      let playerSelection = prompt('Pick Rock, Paper, Scissors?');
+      let playerScore = 0;
+      let computerScore = 0;
+      let roundNumber = 0;
 
       //this function will run the computers random play
       function computerPlay() {
@@ -22,26 +25,38 @@
 
 
         if (playerSelection === computerSelection) {
-          return 'You both picked ' + playerSelection;
+          return 'You tie! You both picked ' + playerSelection + '!';
         }
 
         else if ((playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'scissors') ||
         (playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'rock') ||
         (playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'paper') ){
           return 'You win! ' + playerSelection + ' beats ' + computerSelection + '.';
-        }
+          playerScore++
 
-         else {
+        }
+        else {
            return 'You lose! Computers ' + computerSelection + ' beats your ' + playerSelection + '.';
+           computerScore++;
          }
       }
 
-    function game() {
-      for(var x = 1; x <= 5; x++) {
-        return playRound();
+    // this function should play 5 games and announce the winner of the game
+    function game(games) {
+
+
+      while(roundNumber < 5) {
+         if(playerSelection) {
+           playerScore = playerScore + 1;
+           roundNumber++
+         }
+        else {
+          computerScore = computerScore + 1;
+        }
+
       }
     }
-
+      game(5);
       console.log(playRound(playerSelection.toLowerCase(), computerPlay()));
 
 
