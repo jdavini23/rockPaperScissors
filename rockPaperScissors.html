@@ -9,12 +9,15 @@
 
     <script type="text/javascript">
 
-      var gameOptions = ['Rock', 'Paper', 'Scissors'];
+      var gameOptions = ['rock', 'paper', 'scissors'];
       var playerSelection = prompt('Pick Rock, Paper, Scissors?');
+
+      //this function will run the computers random play
       function computerPlay() {
         return gameOptions[Math.floor(Math.random()* gameOptions.length)];
       }
 
+      // this will determine the winner and loser of the game
       function playRound(playerSelection, computerSelection) {
 
 
@@ -22,17 +25,24 @@
           return 'You both picked ' + playerSelection;
         }
 
-        else if ((playerSelection === 'Rock' && computerSelection === 'Scissors') ||
-        (playerSelection === 'Paper' && computerSelection === 'Rock') ||
-        (playerSelection === 'Scissors' && computerSelection === 'Paper') ){
-          return 'You win! ' + playerSelection + ' beats ' + computerSelection + ' .';
+        else if ((playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'scissors') ||
+        (playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'rock') ||
+        (playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'paper') ){
+          return 'You win! ' + playerSelection + ' beats ' + computerSelection + '.';
         }
 
          else {
-           return 'You lose! ' + computerSelection + ' beats ' + playerSelection + ' .';
+           return 'You lose! Computers ' + computerSelection + ' beats your ' + playerSelection + '.';
          }
       }
-      console.log(playRound(playerSelection.toUpperCase(), computerPlay()));
+
+    function game() {
+      for(var x = 1; x <= 5; x++) {
+        return playRound();
+      }
+    }
+
+      console.log(playRound(playerSelection.toLowerCase(), computerPlay()));
 
 
 
